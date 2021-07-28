@@ -11,8 +11,8 @@ import (
 func InsertoRegister(u models.User) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
-	db := MongoCN.Database("gp_twitter")
-	col := db.Collection("user")
+	db := MongoCN.Database("go_twitter")
+	col := db.Collection("users")
 	u.Password, _ = EncriptPassword(u.Password)
 
 	result, err := col.InsertOne(ctx, u)
